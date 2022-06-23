@@ -14,6 +14,10 @@ const AnuncioActions = {
         name,
         category,
     }),
+    editar: anuncio => ({
+        type: actionsTypes.EDITAR_ANUNCIO,
+        anuncio,
+    })
 };
 
 export default AnuncioActions;

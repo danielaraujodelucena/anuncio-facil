@@ -1,16 +1,16 @@
 import { actionsTypes } from "../constants/anuncio";
 import { anuncios } from "../data";
 
-const selectedNameDefault = "";
-const selectedCategoryDefault = "";
-
 const INITIAL_STATE = {
     anuncios: [...anuncios],
-    selectedName: selectedNameDefault,
-    selectedCategory: selectedCategoryDefault,
+    selectedName: null,
+    selectedCategory: null,
+    anunc: null,
 }
 
 const AnuncioReducers = (state = INITIAL_STATE, action) => {
+    console.log("cliquei em: ", action.type);
+
     switch(action.type){
         case actionsTypes.ADICIONAR_ANUNCIO: 
             return{ 
@@ -25,6 +25,11 @@ const AnuncioReducers = (state = INITIAL_STATE, action) => {
                 ...state,
                 selectedName: action.name,
                 selectedCategory: action.category,
+            };
+        case actionsTypes.EDITAR_ANUNCIO:
+            return {
+                ...state, 
+                anunc: action.anuncio,
             };
         default:
             return state;
