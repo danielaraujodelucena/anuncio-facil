@@ -1,8 +1,6 @@
 import { connect } from "react-redux";
 
 const Visualizacao = ({ selectedName, selectedCategory }) => {
-    //console.log("visualização - selectedName: ", selectedName);
-
     return (
         <section>
             <h1>Visualizar detalhes</h1>

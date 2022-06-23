@@ -10,7 +10,6 @@ const Cadastro = () => {
     const dispatch = useDispatch();
 
     const cadastrarAnuncio = event => {
-        console.log("Daniel 1 - cliquei em cadastrar");
         event.preventDefault();
 
         const anuncio = {
@@ -19,10 +18,7 @@ const Cadastro = () => {
             category,
             price,
         };
-        console.log("Daniel 2 - foi para o dispatch com actions.adicionar");
-
         dispatch(AnuncioActions.adicionar(anuncio));
-        //console.log('Cadastrando anúncio', anuncio);
     };
 
     return(
