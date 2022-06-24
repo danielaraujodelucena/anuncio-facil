@@ -14,6 +14,14 @@ const AnuncioActions = {
         name,
         category,
     }),
+    editar: anuncio => ({
+        type: actionsTypes.EDITAR_ANUNCIO,
+        anuncio,
+    }),
+    atualizar: anuncio => ({
+        type: actionsTypes.ATUALIZAR_ANUNCIO,
+        anuncio,
+    }),
 };
 
 export default AnuncioActions;

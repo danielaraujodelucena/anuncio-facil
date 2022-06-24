@@ -1,13 +1,11 @@
 import { actionsTypes } from "../constants/anuncio";
 import { anuncios } from "../data";
 
-const selectedNameDefault = "";
-const selectedCategoryDefault = "";
-
 const INITIAL_STATE = {
     anuncios: [...anuncios],
-    selectedName: selectedNameDefault,
-    selectedCategory: selectedCategoryDefault,
+    selectedName: null,
+    selectedCategory: null,
+    anunc: null,
 }
 
 const AnuncioReducers = (state = INITIAL_STATE, action) => {
@@ -18,13 +16,23 @@ const AnuncioReducers = (state = INITIAL_STATE, action) => {
             };
         case actionsTypes.REMOVER_ANUNCIO:
             return{
-                anuncios: state.anuncios.filter(a => a.id !== action.anuncio.id)
+                anuncios: state.anuncios.filter(a => a.id !== action.anuncio.id),
             };
         case actionsTypes.ANUNCIO_SELECIONADO:
             return{
                 ...state,
                 selectedName: action.name,
                 selectedCategory: action.category,
+            };
+        case actionsTypes.EDITAR_ANUNCIO:
+            return {
+                ...state, 
+                anunc: action.anuncio,
+            };
+        case actionsTypes.ATUALIZAR_ANUNCIO:
+            console.log("reducer atualizar anúncio", action.anuncio);
+            return {
+                anuncios: state.anuncios.map(a => a.id !== action.anuncio.id ? a : action.anuncio),
             };
         default:
             return state;
