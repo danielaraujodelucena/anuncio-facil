@@ -9,8 +9,6 @@ const INITIAL_STATE = {
 }
 
 const AnuncioReducers = (state = INITIAL_STATE, action) => {
-    console.log("cliquei em: ", action.type);
-
     switch(action.type){
         case actionsTypes.ADICIONAR_ANUNCIO: 
             return{ 
@@ -18,7 +16,7 @@ const AnuncioReducers = (state = INITIAL_STATE, action) => {
             };
         case actionsTypes.REMOVER_ANUNCIO:
             return{
-                anuncios: state.anuncios.filter(a => a.id !== action.anuncio.id)
+                anuncios: state.anuncios.filter(a => a.id !== action.anuncio.id),
             };
         case actionsTypes.ANUNCIO_SELECIONADO:
             return{
@@ -30,6 +28,11 @@ const AnuncioReducers = (state = INITIAL_STATE, action) => {
             return {
                 ...state, 
                 anunc: action.anuncio,
+            };
+        case actionsTypes.ATUALIZAR_ANUNCIO:
+            console.log("reducer atualizar anúncio", action.anuncio);
+            return {
+                anuncios: state.anuncios.map(a => a.id !== action.anuncio.id ? a : action.anuncio),
             };
         default:
             return state;
