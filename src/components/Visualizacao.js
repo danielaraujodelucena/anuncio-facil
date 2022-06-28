@@ -12,9 +12,9 @@ const Visualizacao = ({ selectedName = null, selectedCategory = null }) => {
     }
 }
 
-const mapStateToProps = (store) => ({
-    selectedName: store.AnuncioReducers.selectedName,
-    selectedCategory: store.AnuncioReducers.selectedCategory,
+const mapStateToProps = (state) => ({
+    selectedName: state.AnuncioReducers.selectedName,
+    selectedCategory: state.AnuncioReducers.selectedCategory,
 });
 
 export default connect(mapStateToProps)(Visualizacao);

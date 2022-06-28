@@ -66,8 +66,8 @@ const Editar = ({anuncio = null}) => {
     
 }
 
-const mapStateToProps = (store) => ({
-    anuncio: store.AnuncioReducers.anunc,
+const mapStateToProps = (state) => ({
+    anuncio: state.AnuncioReducers.anunc,
 });
 
 export default connect(mapStateToProps)(Editar);

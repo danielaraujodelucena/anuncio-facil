@@ -19,8 +19,8 @@ const Listagem = ({ anuncios, exibirDetalhes, editarAnuncio }) => {
     );
 }
 
-const mapStateToProps = (store) => ({
-    anuncios: store.AnuncioReducers.anuncios,
+const mapStateToProps = (state) => ({
+    anuncios: state.AnuncioReducers.anuncios,
 });
 
 const mapDispatchToProps = (dispatch) => ({
