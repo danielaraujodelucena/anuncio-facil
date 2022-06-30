@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
 import AnuncioActions from "../actions/AnuncioActions";
 
-const Editar = ({anuncio = null}) => {
+const Editar = ({anuncio = null, atualiza}) => {
 
     const nameDefault = (anuncio !== null ? anuncio.name : '');
     const categoryDefault = (anuncio !== null ? anuncio.category : '');
@@ -12,8 +12,6 @@ const Editar = ({anuncio = null}) => {
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
-
-    const dispatch = useDispatch();
 
     const atualizarAnuncio = event => {
         event.preventDefault();
@@ -25,7 +23,7 @@ const Editar = ({anuncio = null}) => {
             price,
         };
 
-        dispatch(AnuncioActions.atualizar(anuncioUpdate));
+        atualiza(anuncioUpdate);
     };
 
     if(anuncio != null){
@@ -66,8 +64,12 @@ const Editar = ({anuncio = null}) => {
     
 }
 
-const mapStateToProps = (store) => ({
-    anuncio: store.AnuncioReducers.anunc,
+const mapStateToProps = (state) => ({
+    anuncio: state.AnuncioReducers.anunc,
 });
 
-export default connect(mapStateToProps)(Editar);
+const mapDispatchToProps = dispatch => ({
+    atualiza: (anuncio) => dispatch(AnuncioActions.atualizar(anuncio)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editar);

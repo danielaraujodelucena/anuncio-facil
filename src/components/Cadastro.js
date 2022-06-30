@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import AnuncioActions from "../actions/AnuncioActions";
 
-const Cadastro = () => {
+const Cadastro = ({cadastrar}) => {
     const[name, setName] = useState('');
     const[category, setCategory] = useState('');
     const[price, setPrice] = useState('');
-
-    const dispatch = useDispatch();
 
     const cadastrarAnuncio = event => {
         event.preventDefault();
@@ -18,7 +16,8 @@ const Cadastro = () => {
             category,
             price,
         };
-        dispatch(AnuncioActions.adicionar(anuncio));
+
+        cadastrar(anuncio);
     };
 
     return(
@@ -35,4 +34,8 @@ const Cadastro = () => {
     );
 }
 
-export default Cadastro;
+const mapDispatchToProps = (dispatch) => ({
+    cadastrar: (anuncio) => dispatch(AnuncioActions.adicionar(anuncio)),
+ });
+
+export default connect(null, mapDispatchToProps)(Cadastro);
