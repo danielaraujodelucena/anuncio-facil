@@ -1,9 +1,7 @@
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import AnuncioActions from "../actions/AnuncioActions";
 
 const Listagem = ({ anuncios, exibirDetalhes, editarAnuncio, removerAnuncio }) => {
-    //const anuncios = useSelector(state => state.ListagemReducer.anuncios);
-    //const dispatch = useDispatch();
 
     return(
         <aside>

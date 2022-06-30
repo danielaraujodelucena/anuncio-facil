@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
 import AnuncioActions from "../actions/AnuncioActions";
 
@@ -13,8 +13,6 @@ const Editar = ({anuncio = null, atualiza}) => {
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
 
-    //const dispatch = useDispatch();
-
     const atualizarAnuncio = event => {
         event.preventDefault();
 
@@ -26,7 +24,6 @@ const Editar = ({anuncio = null, atualiza}) => {
         };
 
         atualiza(anuncioUpdate);
-        //dispatch(AnuncioActions.atualizar(anuncioUpdate));
     };
 
     if(anuncio != null){

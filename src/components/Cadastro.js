@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useDispatch, connect } from "react-redux";
+import { connect } from "react-redux";
 import AnuncioActions from "../actions/AnuncioActions";
 
 const Cadastro = ({cadastrar}) => {
     const[name, setName] = useState('');
     const[category, setCategory] = useState('');
     const[price, setPrice] = useState('');
-
-    //const dispatch = useDispatch();
 
     const cadastrarAnuncio = event => {
         event.preventDefault();
@@ -20,7 +18,6 @@ const Cadastro = ({cadastrar}) => {
         };
 
         cadastrar(anuncio);
-        //dispatch(AnuncioActions.adicionar(anuncio));
     };
 
     return(
