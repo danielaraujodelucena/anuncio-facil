@@ -1,9 +1,9 @@
 import { connect, useDispatch } from "react-redux";
 import AnuncioActions from "../actions/AnuncioActions";
 
-const Listagem = ({ anuncios, exibirDetalhes, editarAnuncio }) => {
+const Listagem = ({ anuncios, exibirDetalhes, editarAnuncio, removerAnuncio }) => {
     //const anuncios = useSelector(state => state.ListagemReducer.anuncios);
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
     return(
         <aside>
@@ -11,7 +11,7 @@ const Listagem = ({ anuncios, exibirDetalhes, editarAnuncio }) => {
                 <div key={anuncio.id}>
                     <span>{anuncio.name}</span>
                     <button onClick={() => exibirDetalhes(anuncio.name, anuncio.category)}>Detalhes</button>
-                    <button onClick={() => dispatch(AnuncioActions.remover(anuncio))}>Remover</button>
+                    <button onClick={() => removerAnuncio(anuncio)}>Remover</button>
                     <button onClick={() => editarAnuncio(anuncio)}>Editar</button>
                 </div>
             ))}
@@ -26,6 +26,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
    exibirDetalhes: (name, category) => dispatch(AnuncioActions.visualizar(name, category)),
    editarAnuncio: (anuncio) => dispatch(AnuncioActions.editar(anuncio)),
+   removerAnuncio: (anuncio) => dispatch(AnuncioActions.remover(anuncio)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listagem);
